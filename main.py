@@ -4,8 +4,16 @@ from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate   
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
-import requests
+
 try:
+    # Set up the page configuration
+    st.set_page_config(
+        page_title="Dhurkesh B",  
+        page_icon="favicon.ico",  
+        layout="centered",  
+        initial_sidebar_state="auto", 
+    )
+
     # Load environment variables
     load_dotenv()
 
@@ -25,26 +33,26 @@ try:
         ]
     )
 
-    # Function to fetch data from a URL
-    def fetch_data_from_url(url):
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.text
+    # Function to fetch data from a file
+    def fetch_data_from_file(file_path):
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                return file.read()
         else:
-            st.error(f"Failed to fetch data from the URL: {url}")
+            st.error(f"File not found: {file_path}")
             return None
 
     # Set up Streamlit app
-    st.title('Hello Friends')
+    st.title('Hello Friends👋')
 
-    # Get the URL from the user
-    url = "https://ofkace.github.io/Info/main.html"
+    # Get the file path from the user
+    file_path = "info.txt"  # Path to your info.txt file (contains your information)
 
     # Fetch and display the data
-    if url:
-        data = fetch_data_from_url(url)
+    if file_path:
+        data = fetch_data_from_file(file_path)
         # if data:
-        #     st.text_area("Data Loaded from URL", data, height=200)
+        #     st.text_area("Data Loaded from File", data, height=200)
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -77,6 +85,6 @@ try:
             # Add assistant response to chat history
             st.session_state.messages.append({"role": "assistant", "content": response})
         else:
-            st.warning("Please enter a valid URL and load the data before asking a question.")
+            st.warning("Please ensure the file exists and contains valid data before asking a question.")
 except:
-    st.warning('server busy..')
+    st.warning('Server busy...')
