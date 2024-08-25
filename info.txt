@@ -23,6 +23,7 @@ Education:
 
 Personal Details:
 - Date of Birth: 30.12.2004
+- Gender: Male
 - Native: Salem District, Attur Taluk, Tamil Nadu
 - Blood Group: B+ve
 
