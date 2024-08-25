@@ -1,4 +1,4 @@
-# 🌟 Chat-Bot using Streamlit, LangChain, and Google Generative AI
+# Chat-Bot using Streamlit, LangChain, and Google Generative AI
 
 Welcome to the **Chat-Bot** project! This application is an interactive Q&A chatbot built using **Streamlit**, **LangChain**, and **Google Generative AI**. The bot is designed to answer user queries based on data provided by the user in a file.
 
