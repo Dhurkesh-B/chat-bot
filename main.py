@@ -70,5 +70,6 @@ try:
             st.session_state.messages.append({"role": "assistant", "content": response})
         else:
             st.warning("Please ensure the file exists and contains valid data before asking a question.")
-except:
-    st.warning('Server busy...')
+except Exception as e:
+    st.error(f"Error occurred: {e}")
+
